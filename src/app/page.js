@@ -1,18 +1,13 @@
-import Head from "next/head";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
-  return (
-    <>
-      <Head>
-        <title>Carlynda Gao - Homepage</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Carlynda's personal website" />
-      </Head>
-      <iframe
-        src="/index.html"
-        style={{ width: "100%", height: "100vh", border: "none" }}
-        title="Homepage"
-      />
-    </>
-  );
+export default async function HomePage() {
+  const cookieStore = await cookies(); 
+  const cookie = cookieStore.get(process.env.PASSWORD_COOKIE_NAME)?.value;
+
+  if (!cookie) {
+    redirect("/login");
+  }
+
+  redirect("/index.html");
 }
