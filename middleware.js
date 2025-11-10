@@ -1,20 +1,24 @@
 import { NextResponse } from "next/server";
 
 export function middleware(req) {
-  const authHeader = req.headers.get("authorization");
-  const USER = "guest"; 
-  const PASS = process.env.SITE_PASSWORD; 
+  const basicAuth = req.headers.get("authorization");
+  const url = req.nextUrl;
 
-  if (authHeader) {
-    const [, encoded] = authHeader.split(" ");
-    const [user, pass] = Buffer.from(encoded, "base64").toString().split(":");
+  const USER = "guest";
+  const PASS = process.env.SITE_PASSWORD;
 
-    if (user === USER && pass === PASS) {
-      return NextResponse.next();
+  if (basicAuth) {
+    const [scheme, encoded] = basicAuth.split(" ");
+
+    if (scheme === "Basic") {
+      const [user, pwd] = atob(encoded).split(":");
+      if (user === USER && pwd === PASS) {
+        return NextResponse.next(); 
+      }
     }
   }
 
-  return new NextResponse("Authorization required", {
+  return new Response("Authentication required", {
     status: 401,
     headers: {
       "WWW-Authenticate": 'Basic realm="Secure Area"',
@@ -23,5 +27,5 @@ export function middleware(req) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|favicon.ico).*)"], 
+  matcher: ["/((?!_next|favicon.ico|access-denied).*)"],
 };
