@@ -1,11 +1,14 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
-export function middleware(req) {
-  const cookie = req.cookies.get(process.env.PASSWORD_COOKIE_NAME);
-
-  if (!cookie && req.nextUrl.pathname.startsWith("/")) {
-    return NextResponse.rewrite(new URL("/", req.url)); 
+export function middleware(request) {
+  const cookie = request.cookies.get(process.env.PASSWORD_COOKIE_NAME);
+  const loginPath = '/login';
+  const isLogin = request.nextUrl.pathname.startsWith(loginPath);
+  if (!cookie && !isLogin) {
+    return NextResponse.redirect(new URL(loginPath, request.url));
   }
-
   return NextResponse.next();
 }
+export const config = {
+  matcher: ['/', '/index.html'], 
+};
