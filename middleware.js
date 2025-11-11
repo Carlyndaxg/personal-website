@@ -1,16 +1,19 @@
 import { NextResponse } from 'next/server';
+import cookie from 'cookie';
 
 export default function middleware(request) {
-  const cookie = request.cookies.get(process.env.PASSWORD_COOKIE_NAME);
+  const cookieHeader = request.headers.get('cookie') || '';
+  const cookies = cookie.parse(cookieHeader);
+  const authCookie = cookies[process.env.PASSWORD_COOKIE_NAME];
   const loginPath = '/login';
   const isLogin = request.nextUrl.pathname.startsWith(loginPath);
-  if (!cookie && !isLogin) {
+  if (!authCookie && !isLogin) {
     return NextResponse.redirect(new URL(loginPath, request.url));
   }
   return NextResponse.next();
 }
 
 export const config = {
-  runtime: 'nodejs',  // or 'edge' if you decide later
+  runtime: 'nodejs',
   matcher: ['/', '/index.html'],
 };
