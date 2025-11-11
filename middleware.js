@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export function middleware(request) {
+export default function middleware(request) {
   const cookie = request.cookies.get(process.env.PASSWORD_COOKIE_NAME);
   const loginPath = '/login';
   const isLogin = request.nextUrl.pathname.startsWith(loginPath);
@@ -9,7 +9,8 @@ export function middleware(request) {
   }
   return NextResponse.next();
 }
+
 export const config = {
-  runtime: 'nodejs',  
+  runtime: 'nodejs',  // or 'edge' if you decide later
   matcher: ['/', '/index.html'],
 };
