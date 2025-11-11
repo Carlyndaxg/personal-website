@@ -15,7 +15,7 @@ export async function POST(req) {
     httpOnly: true,
     path: "/",
     sameSite: "strict",
-    maxAge: 3600, 
+    maxAge: 10, 
   });
 
   return new Response(

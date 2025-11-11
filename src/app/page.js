@@ -7,7 +7,7 @@ export default async function HomePage() {
 
   if (!cookie) {
     redirect("/login");
+  } else {
+    redirect('/index.html');
   }
-
-  return null;
 }
