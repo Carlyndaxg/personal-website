@@ -7,7 +7,9 @@ export default function middleware(request) {
   const authCookie = cookies[process.env.PASSWORD_COOKIE_NAME];
 
   const loginPath = "/login";
-  const isLogin = request.nextUrl.pathname.startsWith(loginPath);
+
+  const url = new URL(request.url); 
+  const isLogin = url.pathname.startsWith(loginPath);
 
   if (!authCookie && !isLogin) {
     return NextResponse.redirect(new URL(loginPath, request.url));
