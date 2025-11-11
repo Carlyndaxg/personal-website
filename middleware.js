@@ -15,6 +15,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  runtime: 'nodejs',
   matcher: ['/', '/index.html'],
 };
