@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export function middleware(request) {
+export default function middleware(request) {
   const cookieName = process.env.PASSWORD_COOKIE_NAME || 'auth_token';
   const authCookie = request.cookies.get(cookieName);
 
