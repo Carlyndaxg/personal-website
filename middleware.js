@@ -1,10 +1,12 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import cookie from "cookie";
 
 export default function middleware(request) {
-  const cookieName = process.env.PASSWORD_COOKIE_NAME || 'auth_token';
-  const authCookie = request.cookies.get(cookieName);
+  const cookieHeader = request.headers.get("cookie") || "";
+  const cookies = cookie.parse(cookieHeader);
+  const authCookie = cookies[process.env.PASSWORD_COOKIE_NAME];
 
-  const loginPath = '/login';
+  const loginPath = "/login";
   const isLogin = request.nextUrl.pathname.startsWith(loginPath);
 
   if (!authCookie && !isLogin) {
@@ -15,6 +17,6 @@ export default function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/', '/index.html'],
-  runtime: 'nodejs',
+  runtime: "nodejs", 
+  matcher: ["/", "/index.html"],
 };
