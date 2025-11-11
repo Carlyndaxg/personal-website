@@ -1,7 +1,7 @@
-const nextConfig = {
-  async rewrites() {
-    return [{ source: '/', destination: '/index.html' }];
-  },
+module.exports = {
+    async rewrits() {
+        return [
+            { source: '/', destination: '/index.html' },
+        ];
+    },
 };
-
-export default nextConfig;
