@@ -12,7 +12,7 @@ export default function middleware(request) {
   const isLogin = url.pathname.startsWith(loginPath);
 
   if (!authCookie && !isLogin) {
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(new URL(loginPath, request.url));
   }
 
   return NextResponse.next();
