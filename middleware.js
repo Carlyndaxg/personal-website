@@ -11,11 +11,6 @@ export default function middleware(request) {
   const url = new URL(request.url); 
   const isLogin = url.pathname.startsWith(loginPath);
 
-  console.log("Middleware Request URL:", request.url);
-  console.log("Cookies received:", cookies);
-  console.log("Auth cookie:", authCookie);
-  console.log("Request path:", pathname);
-
   if (!authCookie && !isLogin) {
     return NextResponse.redirect(new URL(loginPath, request.url));
   }

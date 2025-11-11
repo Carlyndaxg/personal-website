@@ -9,9 +9,5 @@ export default async function HomePage() {
     redirect("/login");
   }
 
-  return (
-    <div>
-      Loading...
-    </div>
-  );
+  return null;
 }
