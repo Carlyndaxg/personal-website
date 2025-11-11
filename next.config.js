@@ -1,5 +1,5 @@
 module.exports = {
-    async rewrits() {
+    async rewrites() {
         return [
             { source: '/', destination: '/index.html' },
         ];
