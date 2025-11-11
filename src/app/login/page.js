@@ -1,18 +1,20 @@
-"use client"; 
+"use client";
+
+import Head from "next/head";
 
 export default function LoginPage() {
   return (
-    <html>
-      <head>
+    <>
+      <Head>
         <title>Password Required</title>
-      </head>
-      <body>
+      </Head>
+      <main>
         <h2>Password Required</h2>
         <form method="POST" action="/api/login">
           <input type="password" name="password" required />
           <button type="submit">Submit</button>
         </form>
-      </body>
-    </html>
+      </main>
+    </>
   );
 }
