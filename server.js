@@ -20,6 +20,6 @@ app.get('/Homepage', function(req, res) {
     res.sendFile(__dirname + '/index.html');
   });
 
-app.get('Projects', function(req, res) {
+app.get('/Projects', function(req, res) {
     res.sendFile(__dirname + 'projects.html');
 });
