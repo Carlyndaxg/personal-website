@@ -17,10 +17,14 @@ app.listen(PORT, () => {
 });
 
 // change page urls
-app.get('/Homepage', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', + '/index.html'));
   });
 
-app.get('/Projects', function(req, res) {
-    res.sendFile(__dirname + 'projects.html');
+app.get('/projects', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', + 'projects.html'));
 });
+
+app.get('/about', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', + '/about.html'));
+})
