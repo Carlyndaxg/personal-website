@@ -22,7 +22,7 @@ app.get('/about', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'about.html'));
 })
 
-// change page urls
+// change page urls (broken)
 app.get("/index.html", (req, res) => res.redirect("/"));
 app.get("/projects.html", (req, res) => res.redirect("/projects"));
 app.get("/about.html", (req, res) => res.redirect("/about"));
