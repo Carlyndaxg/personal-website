@@ -103,10 +103,12 @@ footer {
     transform: translateY(-34px);
     pointer-events: none;
 }
+/* no more underline when hovering
 .header-flex-container a:hover {
     text-decoration: underline;
     text-decoration-thickness: 2px;
 }
+*/
 /* get rid of underline on page linkes */
 .header a:visited, a:link, a:active {
     text-decoration: none;
@@ -304,10 +306,12 @@ body {
     padding: 5px;
     transition: text-decoration 0.5s ease;
 }
+/* no underline.. looks kinda tacky
 .menu li:hover {
     text-decoration: underline;
     text-decoration-thickness: 2px;
 }
+*/
 .menu.open-menu {
     max-height: 400px;
     opacity: 1;
