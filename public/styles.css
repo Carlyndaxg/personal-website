@@ -167,7 +167,6 @@ footer {
 }
 /* 3d model */
 #model3d {
-    width: 48vw;
     height: 48vh;  
     margin: 0 auto;
     text-align: center;
@@ -389,7 +388,7 @@ body {
     /* homepage positioning with browser screen width <= 780px */
     #model3d {
         padding-bottom: 57px;
-        width: 215px;
+        width: 92vw;
         height: 40vh;  
         margin: 0 auto;
         text-align: center;
@@ -695,5 +694,9 @@ body {
         position: absolute;
         transform: translateX(388px);
         top: 180px;
+    }
+    #model3d {
+        width: 746px;
+        margin-left: 0;
     }
 }
