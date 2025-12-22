@@ -23,7 +23,7 @@ header, #largefont {
 }
 /* font sizing */
 #largesize {
-    font-size: 20px;
+    font-size: 18px;
 }
 #smallerheader {
     font-size: 18px;
@@ -315,8 +315,15 @@ body {
     max-height: 400px;
     opacity: 1;
 }
+#index-main {
+    margin: 0 auto;
+}
 /* mobile screen width positionings */
 @media screen and (max-width: 780px) {
+    body {
+        margin-left: 25px;
+        margin-right: 14px;
+    }
     .header-icon {
         border: none;
         height: 47px;
@@ -380,10 +387,8 @@ body {
     }
     .dropdown-name {
         position: absolute;
-        top: 16px;
-    }
-    .dropdown-name:hover {
-        text-decoration: underline;
+        top: 17px;
+        font-size: 18px;
     }
     /* homepage positioning with browser screen width <= 780px */
     #model3d {
@@ -395,7 +400,7 @@ body {
         background: transparent;
     }
     #index-main {
-        padding-top: 60px;
+        padding-top: 66px;
     }
     /* about me page positioning with browser screen width <= 780px */
     #image-switch {
@@ -697,6 +702,6 @@ body {
     }
     #model3d {
         width: 746px;
-        margin-left: 0;
+        margin: 0 auto;
     }
 }
